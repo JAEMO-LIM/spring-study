@@ -1,0 +1,7 @@
+services:
+  kim-spring-db:
+    image : mysql:9.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    ports:
+      - "3307:3306"

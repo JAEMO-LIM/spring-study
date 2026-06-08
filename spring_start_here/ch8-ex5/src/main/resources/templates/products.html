@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+  <h1>Product</h1>
+<h2>View products</h2>
+<table>
+  <tr>
+    <th>Product Name</th>
+    <td>Product Price</td>
+  </tr>
+  <tr th:each="p: ${products}">
+    <td th:text="${p.name}"></td>
+    <td th:text="${p.price}"></td>
+  </tr>
+</table>
+<h2>상품 추가</h2>
+<form action="/products" method="post">
+  이름 : <input type="text" name="name"><br/>
+  가격 : <input type="number" step="any" name="price"><br/>
+  <button type="submit">상품 추가</button>
+</form>
+</body>
+</html>
