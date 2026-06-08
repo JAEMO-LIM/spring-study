@@ -31,7 +31,7 @@ public class PostService {
     @Transactional
     public Post update(int id, Post requestPost) {
         Post post = postRepository.findById(id)
-                .orElse(null);
+                .orElseThrow(()-> new IllegalArgumentException("Post not found" + id));
 
         post.changePost(requestPost.getTitle(), requestPost.getContent(), requestPost.getAuthor());
         return post;
