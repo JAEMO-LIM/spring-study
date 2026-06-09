@@ -20,8 +20,9 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public void save(Post post) {
+    public Post save(Post post) {
         postRepository.save(post);
+        return post;
     }
 
     public void deleteById(int id) {
