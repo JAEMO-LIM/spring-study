@@ -58,8 +58,13 @@ public class PostsController {
 
     @GetMapping("/posts/{id}")
     public ResponseEntity<PostResponse> getPost(@PathVariable int id) {
-        postService.findById(id);
-
         return new ResponseEntity<>(postService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/posts/popular")
+    public ResponseEntity<List<PostResponse>> getPopularPosts() {
+        postService.findTop3ByViewer();
+
+        return new ResponseEntity<>(postService.findTop3ByViewer(), HttpStatus.OK);
     }
 }

@@ -57,7 +57,10 @@ public class PostService {
         return new PostResponse(post);
     }
 
-    public
-
-
+    public List<PostResponse> findTop3ByViewer() {
+        List<Post> posts = postRepository.findTop3ByOrderByViewerDesc();
+        return posts.stream()
+                .map(post -> new PostResponse(post))
+                .toList();
+    }
 }
