@@ -8,6 +8,8 @@ import practice2.Entity.Post;
 import practice2.Repository.CommentRepository;
 import practice2.dto.CommentCreateRequest;
 import practice2.Repository.PostRepository;
+import practice2.dto.CommentResponse;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,5 +22,14 @@ public class CommentService {
         Post post = postRepository.findById(postId).orElseThrow(()-> new IllegalArgumentException("Post not found" + postId));
 
         commentRepository.save(new Comment(request.getContent(), request.getAuthor(), post));
+    }
+
+    public List<CommentResponse> getCommentsByPostId(int postId) {
+        List<Comment> comments = commentRepository.findByPostId(postId);
+        List<CommentResponse> responses = comments.stream()
+                .map(CommentResponse::new)
+                .toList();
+
+        return responses;
     }
 }
