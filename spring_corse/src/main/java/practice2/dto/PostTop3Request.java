@@ -16,4 +16,5 @@ public class PostTop3Request {
         this.author = post.getAuthor();
         this.viewer = post.getViewer();
     }
+    
 }
