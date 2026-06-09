@@ -40,12 +40,24 @@ public class PostService {
         return post;
     }
 
+//    @Transactional
+//    public PostResponse findById(int id) {
+//        Post post = postRepository.findById(id)
+//                .orElseThrow(()-> new IllegalArgumentException("Post not found" + id));
+//        post.viewPlus();
+//
+//        return new PostResponse(post);
+//    }
+
     @Transactional
     public PostResponse findById(int id) {
-        Post post = postRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Post not found" + id));
+        Post post = postRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Post not found" + id));
         post.viewPlus();
 
         return new PostResponse(post);
     }
+
+    public
+
+
 }

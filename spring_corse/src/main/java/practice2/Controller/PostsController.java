@@ -49,10 +49,17 @@ public class PostsController {
         postService.deleteById(id);
     }
 
+//    @GetMapping("/posts/{id}")
+//    public ResponseEntity<PostResponse> getPostById(@PathVariable int id) {
+//        // 서비스에서 조회수 증가와 DTO 포장까지 완료된 결과물을 받음
+//        PostResponse response = postService.findById(id);
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
+
     @GetMapping("/posts/{id}")
-    public ResponseEntity<PostResponse> getPostById(@PathVariable int id) {
-        // 서비스에서 조회수 증가와 DTO 포장까지 완료된 결과물을 받음
-        PostResponse response = postService.findById(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<PostResponse> getPost(@PathVariable int id) {
+        postService.findById(id);
+
+        return new ResponseEntity<>(postService.findById(id), HttpStatus.OK);
     }
 }
