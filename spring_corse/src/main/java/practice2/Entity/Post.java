@@ -17,6 +17,7 @@ public class Post {
     private String title;
     private String content;
     private String author;
+    private int viewer = 0;
 
     public void changePost(String title, String content, String author) {
         this.title = title;
@@ -28,5 +29,17 @@ public class Post {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public Post(int id, String title, String content, String author, int viewer) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.viewer = viewer;
+    }
+
+    public void viewPlus() {
+        this.viewer = this.viewer + 1;
     }
 }

@@ -3,10 +3,9 @@ package practice2.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import practice2.Entity.Post;
 import practice2.Repository.PostRepository;
+import practice2.dto.PostResponse;
 
 import java.util.List;
 
@@ -17,7 +16,10 @@ public class PostService {
     private final PostRepository postRepository;
 
     public List<Post> findAll() {
-        return postRepository.findAll();
+        return  postRepository.findAll();
+//        post = post.stream()
+//                .viewPlus()
+//                .toList();
     }
 
     public Post save(Post post) {
@@ -38,8 +40,12 @@ public class PostService {
         return post;
     }
 
+    @Transactional
+    public PostResponse findById(int id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Post not found" + id));
+        post.viewPlus();
 
-
-
-
+        return new PostResponse(post);
+    }
 }
