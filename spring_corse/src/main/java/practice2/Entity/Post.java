@@ -31,14 +31,6 @@ public class Post {
         this.author = author;
     }
 
-    public Post(int id, String title, String content, String author, int viewer) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.author = author;
-        this.viewer = viewer;
-    }
-
     public void viewPlus() {
         this.viewer = this.viewer + 1;
     }

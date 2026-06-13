@@ -2,6 +2,7 @@ package practice2.Controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class PostsController {
 
     private final PostService postService;
@@ -58,6 +60,11 @@ public class PostsController {
 
     @GetMapping("/posts/{id}")
     public ResponseEntity<PostResponse> getPost(@PathVariable int id) {
+        log.error("ERROR 레벨 로그 테스트 - ID: {}", id);
+        log.warn("WARN 레벨 로그 테스트 - ID: {}", id);
+        log.info("INFO 레벨 로그 테스트 - ID: {}", id);
+        log.debug("DEBUG 레벨 로그 테스트 - ID: {}", id);
+        log.trace("TRACE 레벨 로그 테스트 - ID: {}", id);
         return new ResponseEntity<>(postService.findById(id), HttpStatus.OK);
     }
 
